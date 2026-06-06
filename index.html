@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Audio Engineering Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000000;
+      color: #e0e0e0;
+      font-family: 'Courier New', 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+      line-height: 1.5;
+      padding: 2rem 1.5rem;
+    }
+
+    /* pink accents */
+    a, .accent-text, .section-title span, .media-card h3, 
+    .profile-detail strong, .footer a, .status-badge {
+      color: #ff3b8c;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      letter-spacing: -0.02em;
+      border-left: 4px solid #ff3b8c;
+      padding-left: 1rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* ----- PROFILE SECTION (LANDING) ----- */
+    .profile-section {
+      margin-bottom: 3.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .page-title {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #ffffff 30%, #ff3b8c 90%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 1.2rem;
+    }
+
+    .profile-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+      align-items: baseline;
+      background: #0a0a0a;
+      padding: 1.5rem;
+      border-radius: 20px;
+      border: 1px solid #1e1e1e;
+    }
+
+    .profile-detail {
+      font-size: 1.15rem;
+    }
+
+    .profile-detail p {
+      margin: 0.5rem 0;
+    }
+
+    .profile-detail strong {
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+
+    .name-highlight {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.25rem;
+    }
+
+    /* cards grid */
+    .audio-grid, .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .media-card {
+      background: #0c0c0c;
+      border-radius: 24px;
+      padding: 1.2rem;
+      transition: all 0.2s ease;
+      border: 1px solid #222;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .media-card:hover {
+      border-color: #ff3b8c;
+      transform: translateY(-3px);
+      background: #101010;
+    }
+
+    .media-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      border-left: 3px solid #ff3b8c;
+      padding-left: 0.75rem;
+    }
+
+    audio, video {
+      width: 100%;
+      margin-top: 0.5rem;
+      margin-bottom: 0.75rem;
+      border-radius: 12px;
+      background: #1a1a1a;
+      outline: none;
+    }
+
+    video {
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #0a0a0a;
+      border-radius: 16px;
+    }
+
+    audio::-webkit-media-controls-panel,
+    video::-webkit-media-controls-panel {
+      background-color: #1e1e1e;
+    }
+
+    .file-hint {
+      font-size: 0.7rem;
+      color: #888;
+      margin-top: 0.5rem;
+      font-family: monospace;
+      border-top: 1px dashed #2c2c2c;
+      padding-top: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .file-hint .status {
+      font-weight: bold;
+      color: #ffaa44;
+    }
+
+    .masterpiece-container {
+      margin-top: 1rem;
+      background: linear-gradient(145deg, #0f0f0f, #050505);
+      border-radius: 32px;
+      padding: 1.8rem;
+      border: 1px solid #ff3b8c40;
+    }
+
+    hr {
+      border-color: #2a2a2a;
+      margin: 2rem 0;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      font-size: 0.8rem;
+      border-top: 1px solid #1f1f1f;
+      color: #aaa;
+    }
+
+    .footer a {
+      text-decoration: none;
+      border-bottom: 1px dotted #ff3b8c;
+    }
+
+    /* reactive touches */
+    @media (max-width: 760px) {
+      body {
+        padding: 1rem;
+      }
+      .page-title {
+        font-size: 2.2rem;
+      }
+      .name-highlight {
+        font-size: 1.4rem;
+      }
+      .audio-grid, .video-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .profile-grid {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .media-card h3 {
+        font-size: 1.2rem;
+      }
+    }
+
+    button, .fake-button {
+      background: none;
+      border: none;
+    }
+
+    .warning-msg {
+      color: #ff8c8c;
+      font-size: 0.75rem;
+    }
+
+    /* accessibility and focus */
+    a:focus-visible, audio:focus, video:focus {
+      outline: 2px solid #ff3b8c;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  
+  <!-- SECTION 0 : LANDING PAGE / PROFILE -->
+  <section class="profile-section">
+    <h1 class="page-title">◢ AUDIO ENGINEERING PORTFOLIO</h1>
+    <div class="profile-grid">
+      <div class="profile-detail">
+        <div class="name-highlight">BEATRIZ FAYE T. ALTARES</div>
+        <p><strong>✦ name</strong> &nbsp; Beatriz Faye T. Altares</p>
+        <p><strong>✦ university</strong> &nbsp; National University - Manila · College of Computing and Information Technologies</p>
+        <p><strong>✦ output</strong> &nbsp; Audio Engineering Portfolio</p>
+      </div>
+      <div class="profile-detail">
+        <p><span class="accent-text">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</span></p>
+        <p>Audio Engineering</p>
+        <p>CTAUDIOL</p>
+        <p>✧ INF237 ✧</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1 : 6 AUDIO WORKS -->
+  <div class="section-wrapper">
+    <h2 class="section-title"><span>▾ SECTION 01</span> — AUDIO WORKS</h2>
+    <div class="audio-grid" id="audioGrid">
+      <!-- 6 audios: mix / beat matching / cut up / mashup / medley / remix -->
+      <!-- each card uses data attributes, fallback messages via JS, but static paths -->
+      <div class="media-card" data-title="Audio Mix">
+        <h3>🎧 AUDIO MIX</h3>
+        <audio controls preload="metadata" onerror="this.nextElementSibling.style.display='flex'">
+          <source src="./assets/audio/audio-mix.wav" type="audio/mpeg">
+          Your browser does not support audio.
+        </audio>
+        <div class="file-hint" style="display: none;"><span class="status">⚠️ missing file</span> → add /assets/audio/audio-mix.wav</div>
+        <div class="file-hint"><span class="status">🎛️</span> multi‑track blend & stem balancing</div>
+      </div>
+
+      <div class="media-card" data-title="Beat Matching">
+        <h3>⏱️ BEAT MATCHING</h3>
+        <audio controls preload="metadata" onerror="this.nextElementSibling.style.display='flex'">
+          <source src="./assets/audio/beat-matching.wav" type="audio/mpeg">
+        </audio>
+        <div class="file-hint" style="display: none;"><span class="status">⚠️ missing file</span> → add /assets/audio/beat-matching.wav</div>
+        <div class="file-hint"><span class="status">🎚️</span> bpm synced / harmonic transition demo</div>
+      </div>
+
+      <div class="media-card" data-title="Cut Up">
+        <h3>✂️ CUT UP</h3>
+        <audio controls preload="metadata" onerror="this.nextElementSibling.style.display='flex'">
+          <source src="./assets/audio/cut-up.wav" type="audio/mpeg">
+        </audio>
+        <div class="file-hint" style="display: none;"><span class="status">⚠️ missing file</span> → add /assets/audio/cut-up.wav</div>
+        <div class="file-hint"><span class="status">🔪</span> chopped & rearranged phrases</div>
+      </div>
+
+      <div class="media-card" data-title="Mashup">
+        <h3>🔄 MASHUP</h3>
+        <audio controls preload="metadata" onerror="this.nextElementSibling.style.display='flex'">
+          <source src="./assets/audio/mashup.wav" type="audio/mpeg">
+        </audio>
+        <div class="file-hint" style="display: none;"><span class="status">⚠️ missing file</span> → add /assets/audio/mashup.wav</div>
+        <div class="file-hint"><span class="status">🎭</span> genre fusion & vocal layering</div>
+      </div>
+
+      <div class="media-card" data-title="Medley">
+        <h3>🎼 MEDLEY</h3>
+        <audio controls preload="metadata" onerror="this.nextElementSibling.style.display='flex'">
+          <source src="./assets/audio/medley.wav" type="audio/mpeg">
+        </audio>
+        <div class="file-hint" style="display: none;"><span class="status">⚠️ missing file</span> → add /assets/audio/medley.wav</div>
+        <div class="file-hint"><span class="status">🎹</span> continuous thematic suite</div>
+      </div>
+
+      <div class="media-card" data-title="Remix">
+        <h3>🌀 REMIX</h3>
+        <audio controls preload="metadata" onerror="this.nextElementSibling.style.display='flex'">
+          <source src="./assets/audio/remix.wav" type="audio/mpeg">
+        </audio>
+        <div class="file-hint" style="display: none;"><span class="status">⚠️ missing file</span> → add /assets/audio/remix.wav</div>
+        <div class="file-hint"><span class="status">✨</span> reconstruct & reimagine stems</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 : 3 VIDEOS (dialogue, dubbing, foley) -->
+  <div class="section-wrapper">
+    <h2 class="section-title"><span>▾ SECTION 02</span> — VIDEO POST & SOUND DESIGN</h2>
+    <div class="video-grid" id="videoGrid">
+      <div class="media-card">
+        <h3>🎙️ DIALOGUE · ADR SCENE</h3>
+        <video controls preload="metadata" onerror="this.nextElementSibling.style.display='flex'" poster="">
+          <source src="./assets/video/dialogue.mp4" type="video/mp4">
+          Your browser does not support video.
+        </video>
+        <div class="file-hint" style="display: none;"><span class="status">📁 missing video</span> → add /assets/video/dialogue.mp4</div>
+        <div class="file-hint"><span class="status">🎤</span> dialogue cleanup & atmos integration</div>
+      </div>
+
+      <div class="media-card">
+        <h3>🎭 DUBBING · VOICE REPLACEMENT</h3>
+        <video controls preload="metadata" onerror="this.nextElementSibling.style.display='flex'" poster="">
+          <source src="./assets/video/dubbing.mp4" type="video/mp4">
+        </video>
+        <div class="file-hint" style="display: none;"><span class="status">📁 missing video</span> → add /assets/video/dubbing.mp4</div>
+        <div class="file-hint"><span class="status">🗣️</span> lip-sync, re‑voicing, language adaptation</div>
+      </div>
+
+      <div class="media-card">
+        <h3>💥 FOLEY · CINEMATIC SOUND</h3>
+        <video controls preload="metadata" onerror="this.nextElementSibling.style.display='flex'" poster="">
+          <source src="./assets/video/foley.mp4" type="video/mp4">
+        </video>
+        <div class="file-hint" style="display: none;"><span class="status">📁 missing video</span> → add /assets/video/foley.mp4</div>
+        <div class="file-hint"><span class="status">👟</span> footsteps, cloth, props & real‑time recording</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 : MASTERPIECE (1 AUDIO) -->
+  <div class="section-wrapper">
+    <h2 class="section-title"><span>▾ SECTION 03</span> — MASTERPIECE</h2>
+    <div class="masterpiece-container">
+      <div class="media-card" style="background: transparent; border: none; box-shadow: none; padding: 0;">
+        <h3 style="font-size: 1.8rem; border-left: 4px solid #ff3b8c;">🏆 MASTERPIECE: THE SOUND OF MY SOUL</h3>
+        <audio controls preload="metadata" style="margin-top: 1rem;" onerror="this.nextElementSibling.style.display='flex'">
+          <source src="./assets/audio/masterpiece.wav" type="audio/mpeg">
+        </audio>
+        <div class="file-hint" style="display: none;"><span class="status">⚠️ missing file</span> → add /assets/audio/masterpiece.wav to experience full production</div>
+        <div class="file-hint"><span class="status">🌟</span> compositional magnum opus : immersive mastering, spatial audio, intricate sound design</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- script for interactive error handling & dynamic guide modal / popup + any status update -->
+<script>
+  (function() {
+    // ensure missing media fallback messages are shown elegantly
+    const allAudios = document.querySelectorAll('audio');
+    const allVideos = document.querySelectorAll('video');
+    
+    function handleMediaError(mediaEl) {
+      // find next sibling .file-hint that is hidden (the missing warning)
+      let nextHint = mediaEl.nextElementSibling;
+      while (nextHint && !nextHint.classList.contains('file-hint')) {
+        nextHint = nextHint.nextElementSibling;
+      }
+      if (nextHint && nextHint.style.display !== 'flex' && nextHint.innerText.includes('missing')) {
+        nextHint.style.display = 'flex';
+      }
+      // also optional: subtle visual
+      const card = mediaEl.closest('.media-card');
+      if (card) {
+        card.style.borderColor = '#ff7b6e';
+      }
+    }
+    
+    // attach error listeners for each audio/video element if source fails
+    allAudios.forEach(audio => {
+      audio.addEventListener('error', function(e) {
+        handleMediaError(audio);
+      });
+      // also if source src is empty, trigger manually
+      const src = audio.querySelector('source');
+      if (src && (!src.src || src.src === '')) {
+        handleMediaError(audio);
+      } else if (!audio.src && audio.querySelector('source')?.src === window.location.href) {
+        handleMediaError(audio);
+      } else {
+        // if network loads but no file: triggers error naturally, already covered.
+      }
+    });
+    
+    allVideos.forEach(video => {
+      video.addEventListener('error', function(e) {
+        handleMediaError(video);
+      });
+    });
+    
+    // Additional check for any missing files after page load: trigger check for sources that 404
+    window.addEventListener('load', function() {
+      // minor forced check for <source> elements that may already be broken but not triggered error if not loaded?
+      // We can simulate by checking if any audio/video have networkState === 3 (NETWORK_NO_SOURCE)
+      setTimeout(() => {
+        allAudios.forEach(audio => {
+          if (audio.networkState === 3 || (audio.readyState === 0 && !audio.currentSrc)) {
+            handleMediaError(audio);
+          }
+        });
+        allVideos.forEach(video => {
+          if (video.networkState === 3 || (video.readyState === 0 && !video.currentSrc)) {
+            handleMediaError(video);
+          }
+        });
+      }, 200);
+    });
+    console.log('portfolio ready');
+  })();
+</script>
+</body>
+</html>
